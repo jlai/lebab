@@ -1,4 +1,5 @@
 import multiReplaceStatement from './../../utils/multi-replace-statement';
+import {cloneDeep} from 'lodash';
 
 /**
  * Represents a potential class method to be created.
@@ -29,6 +30,10 @@ class PotentialMethod {
     return this.methodNode.body.body.length === 0;
   }
 
+  getMethodComments() {
+    return (this.fullNode && this.fullNode.comments) || (this.methodNode.comments);
+  }
+
   /**
    * Transforms the potential method to actual MethodDefinition node.
    * @return {MethodDefinition}
@@ -51,6 +56,7 @@ class PotentialMethod {
       },
       kind: this.kind,
       static: false,
+      comments: this.getMethodComments(),
     };
   }
 
