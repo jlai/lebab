@@ -46,7 +46,7 @@ class PotentialMethod {
         params: this.methodNode.params,
         defaults: this.methodNode.defaults,
         body: this.methodNode.body,
-        generator: false,
+        generator: this.methodNode.generator,
         expression: false,
       },
       kind: this.kind,
